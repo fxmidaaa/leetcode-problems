@@ -1,16 +1,17 @@
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
+    def isAnagram(self, s, t):
+
+        char_counter = {}
+
         if len(s) != len(t):
             return False
-            
-        char_count = {}
         
         for i in range(len(s)):
-            char_count[s[i]] = char_count.get(s[i], 0) + 1
-            char_count[t[i]] = char_count.get(t[i], 0) - 1
+            char_counter[s[i]] = char_counter.get(s[i], 0) + 1
+            char_counter[t[i]] = char_counter.get(t[i], 0) - 1
 
-        for count in char_count.values():
+        for count in char_counter.values():
             if count != 0:
                 return False
-                
+
         return True
