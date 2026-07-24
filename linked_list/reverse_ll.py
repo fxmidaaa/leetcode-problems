@@ -11,7 +11,7 @@ class Solution:
 
         while curr:
             next_node = curr.next
-            curr = prev
+            curr.next = prev
             prev = curr
             curr = next_node
         return prev
