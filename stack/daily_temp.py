@@ -1,15 +1,13 @@
-from typing import List
-
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        result = [0] * len(temperatures)
+        answer = [0] * len(temperatures)
         stack = []
 
-        for current_day, current_temp in enumerate(temperatures):
-            while stack and current_temp > temperatures[stack[-1]]:
-                previous_day = stack.pop()
-                result[previous_day] = current_day - previous_day
-            stack.append(current_day)
-        
-        return result
-        
+        for curr_day, curr_temp in enumerate(temperatures):
+            while stack and curr_temp > temperatures[stack[-1]]:
+                previous_day = stack[-1]
+                stack.pop()
+                answer[previous_day] = curr_day - previous_day
+            
+            stack.append(curr_day)
+        return answer
